@@ -1,0 +1,16 @@
+export ref=
+export PATH=
+for i in %s
+
+do
+
+gatk --java-options "-Xmx40G" SelectVariants \\
+                -R $ref \\
+                --select-type-to-include SNP \\
+                -restrict-alleles-to BIALLELIC \\
+                --remove-unused-alternates \\
+                --exclude-non-variants \\
+                -V ./${i}.vcf.gz \\
+                -O ${i}.raw.SNP.vcf.gz
+
+done
