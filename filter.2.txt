@@ -1,23 +1,18 @@
-export ref=
-for i in %s
-
 do
 
-java -Djava.io.tmpdir=./temp -Xmx200g -jar  ./GenomeAnalysisTK.jar\\
+java -Djava.io.tmpdir=./temp   ./GenomeAnalysisTK.jar\\
 	-T VariantFiltration \\
 	-R $ref \\
 	-V ../${i}.raw.SNP.vcf.gz \\
 	--logging_level ERROR \\
 	--filterExpression " DP < 311.7894 || DP > 2806.1049 || QD < 2.0 || FS > 60.0 || MQ < 40.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0 || SOR > 3.0" \\
-	--filterName filtered \\
 	--clusterSize 3 \\
 	--clusterWindowSize 10 \\
 	-o ${i}.filter.SNP.vcf.gz
 
-./gatk --java-options "-Xmx200G" SelectVariants \\
+gatk --java-options SelectVariants \\
 	-R $ref \\
 	--select-type-to-include SNP \\
-	-restrict-alleles-to BIALLELIC \\
 	--remove-unused-alternates \\
 	--exclude-non-variants \\
 	-exclude-filtered \\
