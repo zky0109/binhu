@@ -1,10 +1,6 @@
-export ref=
-export PATH=
-for i in %s
-
 do
 
-gatk --java-options "-Xmx40G" SelectVariants \\
+gatk --java-options  SelectVariants \\
                 -R $ref \\
                 --select-type-to-include SNP \\
                 -restrict-alleles-to BIALLELIC \\
