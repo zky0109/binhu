@@ -13,6 +13,7 @@ java -Djava.io.tmpdir=./temp   ./GenomeAnalysisTK.jar\\
 gatk --java-options SelectVariants \\
 	-R $ref \\
 	--select-type-to-include SNP \\
+	-restrict-alleles-to BIALLELIC \\
 	--remove-unused-alternates \\
 	--exclude-non-variants \\
 	-exclude-filtered \\
